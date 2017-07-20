@@ -458,7 +458,7 @@ class XMPPHP_XMLStream {
    *
    * @param string|array $event
    * @param integer $timeout
-   * @return string
+   * @return array
    */
   public function processUntil($event, $timeout=-1) {
     $start = time();
@@ -568,7 +568,8 @@ class XMPPHP_XMLStream {
               if ($handler[2] === null)
                 $handler[2] = $this;
               $this->log->log("Calling {$handler[1]}", XMPPHP_Log::LEVEL_DEBUG);
-              $handler[2]->$handler[1]($this->xmlobj[2]);
+              $name = $handler[1];
+              $handler[2]->$name($this->xmlobj[2]);
             }
           }
         }
@@ -583,14 +584,16 @@ class XMPPHP_XMLStream {
           if ($handler[3] === null)
             $handler[3] = $this;
           $this->log->log("Calling {$handler[2]}", XMPPHP_Log::LEVEL_DEBUG);
-          $handler[3]->$handler[2]($this->xmlobj[2]);
+          $name = $handler[2];
+          $handler[3]->$name($this->xmlobj[2]);
         }
       }
       foreach ($this->idhandlers as $id => $handler) {
         if (array_key_exists('id', $this->xmlobj[2]->attrs) and $this->xmlobj[2]->attrs['id'] == $id) {
           if ($handler[1] === null)
             $handler[1] = $this;
-          $handler[1]->$handler[0]($this->xmlobj[2]);
+          $name = $handler[0];
+          $handler[1]->$name($this->xmlobj[2]);
           #id handlers are only used once
           unset($this->idhandlers[$id]);
           break;
