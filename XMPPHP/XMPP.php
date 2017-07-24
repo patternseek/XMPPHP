@@ -112,9 +112,10 @@ class XMPPHP_XMPP extends XMPPHP_XMLStream {
    * @param string  $server
    * @param boolean $printlog
    * @param string  $loglevel
+   * @param boolean  $is_server
    */
-  public function __construct($host, $port, $user, $password, $resource, $server = null, $printlog = false, $loglevel = null) {
-    parent::__construct($host, $port, $printlog, $loglevel);
+  public function __construct($host, $port, $user, $password, $resource, $server = null, $printlog = false, $loglevel = null, $is_server = false) {
+    parent::__construct($host, $port, $printlog, $loglevel, $is_server);
 
     $this->user = $user;
     $this->password = $password;
