@@ -649,8 +649,8 @@ class XMPPHP_XMLStream {
         if ($handler[2] === null) {
           $handler[2] = $this;
         }
-        $name = $handler[1];
-        $handler[2]->$name($payload);
+        $functionName = $handler[1];
+        $handler[2]->$functionName($payload);
       }
     }
     foreach ($this->until as $key => $until) {
