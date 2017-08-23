@@ -660,8 +660,14 @@ class XMPPHP_XMLStream {
           if (!isset($this->until_count[$key])) {
             $this->until_count[$key] = 0;
           }
-          $this->until_count[$key] += 1;
-          #$this->until[$key] = false;
+          //remove old event if array is full (let's store upto 100 payloads)
+          if($this->until_count[$key] > 1000) {
+            array_shift($this->until_payload);
+          } else {
+            $this->until_count[$key] += 1;
+          }
+          //$this->until_count[$key] += 1;
+          $this->until[$key] = false;
         }
       }
     }
