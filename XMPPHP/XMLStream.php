@@ -480,6 +480,14 @@ class XMPPHP_XMLStream {
       unset($this->until[$event_key]);
     } else {
       $payload = array();
+      if (array_key_exists($event_key, $this->until_payload)) {
+			  unset($this->until_payload[$event_key]);
+			  unset($this->until_count[$event_key]);
+			  unset($this->until[$event_key]);
+		  } else {
+			  unset($this->until_count[$event_key]);
+			  unset($this->until[$event_key]);
+		  }
     }
     return $payload;
   }
@@ -660,13 +668,7 @@ class XMPPHP_XMLStream {
           if (!isset($this->until_count[$key])) {
             $this->until_count[$key] = 0;
           }
-          //remove old event if array is full (let's store upto 100 payloads)
-          if($this->until_count[$key] > 1000) {
-            array_shift($this->until_payload);
-          } else {
-            $this->until_count[$key] += 1;
-          }
-          //$this->until_count[$key] += 1;
+          $this->until_count[$key] += 1;
           $this->until[$key] = false;
         }
       }
