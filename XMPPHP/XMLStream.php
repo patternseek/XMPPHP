@@ -489,6 +489,14 @@ class XMPPHP_XMLStream {
 			  unset($this->until[$event_key]);
 		  }
     }
+	
+    // reset array indexes
+    if (count($this->until) === 0 && count($this->until_count) === 0 && count($this->until_payload) === 0) {
+	$this->until = array();
+	$this->until_count = array();
+	$this->until_payload = array();
+    }
+	  
     return $payload;
   }
 
