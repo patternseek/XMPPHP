@@ -129,9 +129,9 @@ class XMPPHP_XMLStream {
    */
   protected $until = [];
   /**
-   * @var string
+   * @var array
    */
-  protected $until_count = '';
+  protected $until_count = [];
   /**
    * @var array
    */
