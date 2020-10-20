@@ -1,3 +1,10 @@
+Fork status
+================================================================================
+
+This is a maintenance fork, started to fix compatibility issues I found with PHP 7.3 for personal use.
+I'm only using a small amount of the functionality in the library so I won't be fixing compatibility for parts I'm not using.
+
+
 About
 ================================================================================
 XMPPHP is an elegant PHP library for XMPP (Jabber, Google Talk, Facebook etc).
